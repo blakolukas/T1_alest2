@@ -42,28 +42,58 @@ public class Detetive {
             }
         }
         while(mapa.get(y).charAt(x)!='#'){
-            if(mapa.get(y+1).charAt(x)=='|' && a=='u'){
+            // -
+            if(mapa.get(y).charAt(x+1)=='-' && a == 'r'){
+                x++;
+                System.out.println("oi");
+            }else if(mapa.get(y).charAt(x-1)=='-' && a == 'l'){
+                x--;
+            }
+            // |
+            else if(mapa.get(y+1).charAt(x)=='|' && a=='u'){
                 y++;
             }else if(mapa.get(y-1).charAt(x)=='|' && a=='d'){
                 y--;
             }else if(mapa.get(y).charAt(x+1)=='|' && a=='r'){
                 x++;
-                System.out.println("oi");
             }else if(mapa.get(y).charAt(x-1)=='|' && a=='l'){
                 x--;
-            }else if(mapa.get(y).charAt(x+1)=='-' && a == 'r'){
-                x++;
-                System.out.println("oi");
-            }else if(mapa.get(y).charAt(x-1)=='-' && a == 'l'){
-                x--;
-            }else if(mapa.get(y).charAt(x+1)=='/'){
+            }
+            // /
+            else if(mapa.get(y).charAt(x+1)=='/' && a== 'r'){
                 x++;
                 y++;
                 a= 'u';
-            }else if(mapa.get(y).charAt(x-1)=='/'){
+            }else if(mapa.get(y).charAt(x-1)=='/' && a== 'l'){
                 x--;
                 y--;
                 a= 'd';
+            }else if(mapa.get(y+1).charAt(x)=='/' && a== 'u'){
+                x++;
+                y++;
+                a= 'r';
+            }else if(mapa.get(y-1).charAt(x)=='/' && a== 'd'){
+                x--;
+                y--;
+                a= 'l';
+            }
+            // \
+            else if(mapa.get(y).charAt(x+1)=='\\' && a== 'r'){
+                x++;
+                y--;
+                a= 'd';
+            }else if(mapa.get(y).charAt(x-1)=='\\' && a== 'l'){
+                x--;
+                y++;
+                a= 'u';
+            }else if(mapa.get(y+1).charAt(x)=='\\' && a== 'u'){
+                x--;
+                y++;
+                a= 'l';
+            }else if(mapa.get(y-1).charAt(x)=='\\' && a== 'd'){
+                x++;
+                y--;
+                a= 'r';
             }
 
         }
