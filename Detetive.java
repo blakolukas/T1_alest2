@@ -35,6 +35,7 @@ public class Detetive {
         int x=0;
         int y=0;
         char a= 'r';
+        int sum= 0;
         for(int i=0; i<mapa.size(); i++){
             if(mapa.get(i).charAt(0)=='-'){
                 y=i;
@@ -42,10 +43,11 @@ public class Detetive {
             }
         }
         while(mapa.get(y).charAt(x)!='#'){
+            // se for digito
+            if(Character.isDigit(mapa.get(y).charAt(x)))
             // -
             if(mapa.get(y).charAt(x+1)=='-' && a == 'r'){
                 x++;
-                System.out.println("oi");
             }else if(mapa.get(y).charAt(x-1)=='-' && a == 'l'){
                 x--;
             }
