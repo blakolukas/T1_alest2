@@ -39,65 +39,80 @@ public class Detetive {
         for(int i=0; i<mapa.size(); i++){
             if(mapa.get(i).charAt(0)=='-'){
                 y=i;
+                System.out.println(x+ " "+ y);
                 break;
             }
         }
         while(mapa.get(y).charAt(x)!='#'){
-            // se for digito
-            if(Character.isDigit(mapa.get(y).charAt(x)))
-            // -
-            if(mapa.get(y).charAt(x+1)=='-' && a == 'r'){
-                x++;
-            }else if(mapa.get(y).charAt(x-1)=='-' && a == 'l'){
-                x--;
-            }
-            // |
-            else if(mapa.get(y+1).charAt(x)=='|' && a=='u'){
-                y++;
-            }else if(mapa.get(y-1).charAt(x)=='|' && a=='d'){
-                y--;
-            }else if(mapa.get(y).charAt(x+1)=='|' && a=='r'){
-                x++;
-            }else if(mapa.get(y).charAt(x-1)=='|' && a=='l'){
-                x--;
-            }
-            // /
-            else if(mapa.get(y).charAt(x+1)=='/' && a== 'r'){
-                x++;
-                y++;
-                a= 'u';
-            }else if(mapa.get(y).charAt(x-1)=='/' && a== 'l'){
-                x--;
-                y--;
-                a= 'd';
-            }else if(mapa.get(y+1).charAt(x)=='/' && a== 'u'){
-                x++;
-                y++;
-                a= 'r';
-            }else if(mapa.get(y-1).charAt(x)=='/' && a== 'd'){
-                x--;
-                y--;
-                a= 'l';
-            }
-            // \
-            else if(mapa.get(y).charAt(x+1)=='\\' && a== 'r'){
-                x++;
-                y--;
-                a= 'd';
-            }else if(mapa.get(y).charAt(x-1)=='\\' && a== 'l'){
-                x--;
-                y++;
-                a= 'u';
-            }else if(mapa.get(y+1).charAt(x)=='\\' && a== 'u'){
-                x--;
-                y++;
-                a= 'l';
-            }else if(mapa.get(y-1).charAt(x)=='\\' && a== 'd'){
-                x++;
-                y--;
-                a= 'r';
-            }
+            char currentChar = mapa.get(y).charAt(x);
 
+            if (currentChar == '-') {
+                System.out.println("a");
+                if (a == 'r') x++;
+                else if (a == 'l') x--;
+
+            } else if (currentChar == '|') {
+                System.out.println("b");
+                if (a == 'u'){
+                    y++;
+                } else if (a == 'd'){
+                    y--;
+                } else{
+                    if(a == 'r'){
+                        x++;
+                    }else  if(a == 'l'){
+                        x--;
+                    }
+                }
+
+            } else if (currentChar == '/') {
+                System.out.println(x+" "+y+a+sum);
+                if (a == 'r') {
+                    y++;
+                    a = 'u';
+                } else if (a == 'l') {
+                    y--;
+                    a = 'd';
+                } else if (a == 'u') {
+                    x++;
+                    a = 'r';
+                } else if (a == 'd') {
+                    x--;
+                    a = 'l';
+                }
+
+            } else if (currentChar == '\\') {
+                System.out.println("d");
+                if (a == 'r') {
+                    y--;
+                    a = 'd';
+                } else if (a == 'l') {
+                    y++;
+                    a = 'u';
+                } else if (a == 'u') {
+                    x--;
+                    a = 'l';
+                } else if (a == 'd') {
+                    x++;
+                    a = 'r';
+                }
+
+            } else if (Character.isDigit(currentChar)) {
+                int number = 0;
+                if(a=='r'){
+                    while (x < mapa.get(y).length() && Character.isDigit(mapa.get(y).charAt(x))) {
+                        number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
+                        x++;
+                    }
+                }else if(a=='l'){
+                    while (x < mapa.get(y).length() && Character.isDigit(mapa.get(y).charAt(x))) {
+                        number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
+                        x--;
+                    }
+                }
+                
+                sum += number;
+            }
         }
     }
     
