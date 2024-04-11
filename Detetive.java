@@ -46,7 +46,7 @@ public class Detetive {
         }
         while(mapa.get(y).charAt(x)!='#'){
             char currentChar = mapa.get(y).charAt(x);
-
+            
             if (currentChar == '-') {
                 System.out.println("a");
                 if (a == 'r'){
@@ -77,7 +77,7 @@ public class Detetive {
                 }
 
             } else if (currentChar == '/') {
-                System.out.println(x+" "+y+a+sum);
+                System.out.println("c");
                 if (a == 'r') {
                     y--;
                     a = 'u';
@@ -109,7 +109,8 @@ public class Detetive {
                 }
 
             } else if (Character.isDigit(currentChar)) {
-                int number = 0;
+                double number = 0;
+                int times=0;
                 if(a=='r'){
                     while (x < mapa.get(y).length() && Character.isDigit(mapa.get(y).charAt(x))) {
                         number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
@@ -117,8 +118,9 @@ public class Detetive {
                     }
                 }else if(a=='l'){
                     while (x < mapa.get(y).length() && Character.isDigit(mapa.get(y).charAt(x))) {
-                        number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
+                        number = number + Character.getNumericValue(mapa.get(y).charAt(x))*(Math.pow(10, times));
                         x--;
+                        times++;
                     }
                 }else if(a== 'u'){
                     number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
@@ -127,8 +129,8 @@ public class Detetive {
                     number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
                     y++;
                 }
-                
                 sum += number;
+                System.out.println(sum);
             }
             
         }
