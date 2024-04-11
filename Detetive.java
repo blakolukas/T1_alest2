@@ -123,10 +123,10 @@ public class Detetive {
                         times++;
                     }
                 }else if(a== 'u'){
-                    number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
+                    number = Character.getNumericValue(mapa.get(y).charAt(x));
                     y--;
                 }else if(a== 'd'){
-                    number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
+                    number = Character.getNumericValue(mapa.get(y).charAt(x));
                     y++;
                 }
                 sum += number;
