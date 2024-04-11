@@ -13,6 +13,7 @@ public class Detetive {
         mapa= new ArrayList<>();
         carrega(file);
         acha(mapa);
+        System.out.println(dindin);
     }
 
     public double getDindin(){
@@ -48,15 +49,25 @@ public class Detetive {
 
             if (currentChar == '-') {
                 System.out.println("a");
-                if (a == 'r') x++;
-                else if (a == 'l') x--;
+                if (a == 'r'){
+                    x++;
+                }
+                else if (a == 'l'){
+                    x--;
+                }
+                else if(a == 'u'){
+                    y--;
+                }
+                else if(a == 'd'){
+                    y++;
+                }
 
             } else if (currentChar == '|') {
                 System.out.println("b");
                 if (a == 'u'){
-                    y++;
-                } else if (a == 'd'){
                     y--;
+                } else if (a == 'd'){
+                    y++;
                 } else{
                     if(a == 'r'){
                         x++;
@@ -68,10 +79,10 @@ public class Detetive {
             } else if (currentChar == '/') {
                 System.out.println(x+" "+y+a+sum);
                 if (a == 'r') {
-                    y++;
+                    y--;
                     a = 'u';
                 } else if (a == 'l') {
-                    y--;
+                    y++;
                     a = 'd';
                 } else if (a == 'u') {
                     x++;
@@ -84,10 +95,10 @@ public class Detetive {
             } else if (currentChar == '\\') {
                 System.out.println("d");
                 if (a == 'r') {
-                    y--;
+                    y++;
                     a = 'd';
                 } else if (a == 'l') {
-                    y++;
+                    y--;
                     a = 'u';
                 } else if (a == 'u') {
                     x--;
@@ -109,11 +120,19 @@ public class Detetive {
                         number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
                         x--;
                     }
+                }else if(a== 'u'){
+                    number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
+                    y--;
+                }else if(a== 'd'){
+                    number = number * 10 + Character.getNumericValue(mapa.get(y).charAt(x));
+                    y++;
                 }
                 
                 sum += number;
             }
+            
         }
+        dindin= sum;
     }
     
 }
