@@ -1,6 +1,6 @@
 public class Policia {
     public static void main(String[]args){
-        Detetive um= new Detetive("casoK50.txt");
+        Detetive um= new Detetive("casoK200.txt");
         
     }
 }

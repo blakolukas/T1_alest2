@@ -123,11 +123,21 @@ public class Detetive {
                         times++;
                     }
                 }else if(a== 'u'){
-                    number = Character.getNumericValue(mapa.get(y).charAt(x));
-                    y--;
+                    if((x+1 < mapa.get(y).length() || x-1 < 0) && ((Character.isDigit(mapa.get(y).charAt(x-1))==true || Character.isDigit(mapa.get(y).charAt(x+1))==true) || ((mapa.get(y).charAt(x+1)=='-')||(mapa.get(y).charAt(x-1)=='-')))){
+                        y--;
+                    }else{
+                        number = Character.getNumericValue(mapa.get(y).charAt(x));
+                        y--;
+                    }
+                   
+                    
                 }else if(a== 'd'){
-                    number = Character.getNumericValue(mapa.get(y).charAt(x));
-                    y++;
+                    if((x+1 < mapa.get(y).length() || x-1 < 0) && ((Character.isDigit(mapa.get(y).charAt(x-1))==true || Character.isDigit(mapa.get(y).charAt(x+1))==true) || ((mapa.get(y).charAt(x+1)=='-')||(mapa.get(y).charAt(x-1)=='-')))){
+                        y++;
+                    }else{
+                        number = Character.getNumericValue(mapa.get(y).charAt(x));
+                        y++;
+                    }
                 }
                 sum += number;
                 System.out.println(sum);
