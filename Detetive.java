@@ -4,16 +4,21 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 public class Detetive {
     private List<String> mapa;
     private double dindin;
 
     public Detetive(String file) {
+        long a= System.currentTimeMillis();
         mapa= new ArrayList<>();
         carrega(file);
         acha(mapa);
         System.out.println(dindin);
+        long b= System.currentTimeMillis();
+        long time= b-a;
+        System.out.println(time);
     }
 
     public double getDindin(){
