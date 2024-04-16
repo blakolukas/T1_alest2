@@ -1,14 +1,13 @@
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
+
 
 public class Detetive {
     private List<String> mapa;
-    private double dindin;
+    private long dindin;
 
     public Detetive(String file) {
         long a= System.currentTimeMillis();
@@ -19,10 +18,6 @@ public class Detetive {
         long b= System.currentTimeMillis();
         long time= b-a;
         System.out.println(time+" ms");
-    }
-
-    public double getDindin(){
-        return dindin;
     }
     
     private void carrega(String arq){
@@ -123,7 +118,7 @@ public class Detetive {
                     }
                 }else if(a=='l'){
                     while (x < mapa.get(y).length() && Character.isDigit(mapa.get(y).charAt(x))) {
-                        number = number + Character.getNumericValue(mapa.get(y).charAt(x))*(Math.pow(10, times)); //inverso de right
+                        number = number + Character.getNumericValue(mapa.get(y).charAt(x))*(Math.pow(10, times)); //reverso de right
                         x--;
                         times++;
                     }
