@@ -15,10 +15,10 @@ public class Detetive {
         mapa= new ArrayList<>();
         carrega(file);
         caminha(mapa);
-        System.out.println(dindin);
+        System.out.println("dinheiro encontrado: "+dindin+" $");
         long b= System.currentTimeMillis();
         long time= b-a;
-        System.out.println(time);
+        System.out.println(time+" ms");
     }
 
     public double getDindin(){
@@ -40,20 +40,20 @@ public class Detetive {
     private void caminha(List<String> mapa){
         int x=0;
         int y=0;
-        char a= 'r';
+        char a= 'r';//variavel que guarda direção
         int sum= 0; //soma
         for(int i=0; i<mapa.size(); i++){
             if(mapa.get(i).charAt(0)=='-'){
                 y=i;
-                System.out.println(x+ " "+ y);
+                System.out.println("inicia nas coordenadas: "+x+ " "+ y);
                 break;
             }
         }
         while(mapa.get(y).charAt(x)!='#'){
             char currentChar = mapa.get(y).charAt(x);
-            
+            // -
             if (currentChar == '-') {
-                System.out.println("a");
+                System.out.println("-");
                 if (a == 'r'){
                     x++;
                 }
@@ -66,9 +66,9 @@ public class Detetive {
                 else if(a == 'd'){
                     y++;
                 }
-
+            // |
             } else if (currentChar == '|') {
-                System.out.println("b");
+                System.out.println("|");
                 if (a == 'u'){
                     y--;
                 } else if (a == 'd'){
@@ -80,9 +80,9 @@ public class Detetive {
                         x--;
                     }
                 }
-
+            // /
             } else if (currentChar == '/') {
-                System.out.println("c");
+                System.out.println("/");
                 if (a == 'r') {
                     y--;
                     a = 'u';
@@ -96,9 +96,9 @@ public class Detetive {
                     x--;
                     a = 'l';
                 }
-
+            // \
             } else if (currentChar == '\\') {
-                System.out.println("d");
+                System.out.println("\\");
                 if (a == 'r') {
                     y++;
                     a = 'd';
@@ -112,7 +112,7 @@ public class Detetive {
                     x++;
                     a = 'r';
                 }
-
+            // se for dígito
             } else if (Character.isDigit(currentChar)) {
                 double number = 0;
                 int times=0;
@@ -123,7 +123,7 @@ public class Detetive {
                     }
                 }else if(a=='l'){
                     while (x < mapa.get(y).length() && Character.isDigit(mapa.get(y).charAt(x))) {
-                        number = number + Character.getNumericValue(mapa.get(y).charAt(x))*(Math.pow(10, times));
+                        number = number + Character.getNumericValue(mapa.get(y).charAt(x))*(Math.pow(10, times)); //inverso de right
                         x--;
                         times++;
                     }
