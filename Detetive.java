@@ -14,7 +14,7 @@ public class Detetive {
         long a= System.currentTimeMillis();
         mapa= new ArrayList<>();
         carrega(file);
-        acha(mapa);
+        caminha(mapa);
         System.out.println(dindin);
         long b= System.currentTimeMillis();
         long time= b-a;
@@ -37,11 +37,11 @@ public class Detetive {
         }
     }
 
-    private void acha(List<String> mapa){
+    private void caminha(List<String> mapa){
         int x=0;
         int y=0;
         char a= 'r';
-        int sum= 0;
+        int sum= 0; //soma
         for(int i=0; i<mapa.size(); i++){
             if(mapa.get(i).charAt(0)=='-'){
                 y=i;
